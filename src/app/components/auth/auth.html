@@ -1,0 +1,56 @@
+<hlm-tabs tab="sign-in" class="w-full">
+  <hlm-tabs-list aria-label="auth tabs">
+    <button hlmTabsTrigger="sign-in">Login</button>
+    <button hlmTabsTrigger="sign-up">Create account</button>
+  </hlm-tabs-list>
+  <div hlmTabsContent="sign-in">
+    <section hlmCard>
+      <div hlmCardHeader>
+        <h3 hlmCardTitle>Login</h3>
+        <p hlmCardDescription>Login to your account.</p>
+      </div>
+      <p hlmCardContent>
+        <label class="my-4 block" hlmLabel>
+          Email
+          <input class="mt-1.5 w-full" type="email" hlmInput />
+        </label>
+        <label class="my-4 block" hlmLabel>
+          Password
+          <input class="mt-1.5 w-full" type="password" hlmInput />
+        </label>
+      </p>
+      <div hlmCardFooter>
+        <button hlmBtn>Login</button>
+      </div>
+    </section>
+  </div>
+  <div hlmTabsContent="sign-up">
+    <section hlmCard>
+      <div hlmCardHeader>
+        <h3 hlmCardTitle>Create account</h3>
+        <p hlmCardDescription>Create a new account.</p>
+      </div>
+      <p hlmCardContent>
+        <label class="my-4 block" hlmLabel>
+          First name
+          <input class="mt-1.5 w-full" type="text" hlmInput />
+        </label>
+        <label class="my-4 block" hlmLabel>
+          Last name
+          <input class="mt-1.5 w-full" type="text" hlmInput />
+        </label>
+        <label class="my-4 block" hlmLabel>
+          Email
+          <input class="mt-1.5 w-full" type="email" hlmInput />
+        </label>
+        <label class="my-4 block" hlmLabel>
+          Password
+          <input class="mt-1.5 w-full" type="password" hlmInput />
+        </label>
+      </p>
+      <div hlmCardFooter>
+        <button hlmBtn>Create account</button>
+      </div>
+    </section>
+  </div>
+</hlm-tabs>
