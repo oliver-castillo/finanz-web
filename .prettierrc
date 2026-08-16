@@ -8,5 +8,6 @@
         "parser": "angular"
       }
     }
-  ]
+  ],
+  "tailwindFunctions": ["hlm", "cva", "classes"]
 }
