@@ -4,53 +4,121 @@
     <button hlmTabsTrigger="sign-up">Create account</button>
   </hlm-tabs-list>
   <div hlmTabsContent="sign-in">
-    <section hlmCard>
-      <div hlmCardHeader>
-        <h3 hlmCardTitle>Login</h3>
-        <p hlmCardDescription>Login to your account.</p>
-      </div>
-      <p hlmCardContent>
-        <label class="my-4 block" hlmLabel>
-          Email
-          <input class="mt-1.5 w-full" type="email" hlmInput />
-        </label>
-        <label class="my-4 block" hlmLabel>
-          Password
-          <input class="mt-1.5 w-full" type="password" hlmInput />
-        </label>
-      </p>
-      <div hlmCardFooter>
-        <button hlmBtn>Login</button>
-      </div>
-    </section>
+    <form (submit)="onSignIn($event)">
+      <section hlmCard>
+        <div hlmCardHeader>
+          <h3 hlmCardTitle>Login</h3>
+          <p hlmCardDescription>Login to your account.</p>
+        </div>
+        <p hlmCardContent>
+          <label class="my-4 block" hlmLabel>
+            Email
+            <input class="mt-1.5 w-full" type="email" hlmInput [formField]="signInForm.email" />
+          </label>
+          @if (signInForm.email().touched() && signInForm.email().invalid()) {
+            <ul class="error-list">
+              @for (error of signInForm.email().errors(); track error) {
+                <li>
+                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                </li>
+              }
+            </ul>
+          }
+          <label class="my-4 block" hlmLabel>
+            Password
+            <input
+              class="mt-1.5 w-full"
+              type="password"
+              hlmInput
+              [formField]="signInForm.password"
+            />
+          </label>
+          @if (signInForm.password().touched() && signInForm.password().invalid()) {
+            <ul class="error-list">
+              @for (error of signInForm.password().errors(); track error) {
+                <li>
+                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                </li>
+              }
+            </ul>
+          }
+        </p>
+        <div hlmCardFooter>
+          <button type="submit" hlmBtn>Login</button>
+        </div>
+      </section>
+    </form>
   </div>
   <div hlmTabsContent="sign-up">
-    <section hlmCard>
-      <div hlmCardHeader>
-        <h3 hlmCardTitle>Create account</h3>
-        <p hlmCardDescription>Create a new account.</p>
-      </div>
-      <p hlmCardContent>
-        <label class="my-4 block" hlmLabel>
-          First name
-          <input class="mt-1.5 w-full" type="text" hlmInput />
-        </label>
-        <label class="my-4 block" hlmLabel>
-          Last name
-          <input class="mt-1.5 w-full" type="text" hlmInput />
-        </label>
-        <label class="my-4 block" hlmLabel>
-          Email
-          <input class="mt-1.5 w-full" type="email" hlmInput />
-        </label>
-        <label class="my-4 block" hlmLabel>
-          Password
-          <input class="mt-1.5 w-full" type="password" hlmInput />
-        </label>
-      </p>
-      <div hlmCardFooter>
-        <button hlmBtn>Create account</button>
-      </div>
-    </section>
+    <form (submit)="onSignUp($event)">
+      <section hlmCard>
+        <div hlmCardHeader>
+          <h3 hlmCardTitle>Create account</h3>
+          <p hlmCardDescription>Create a new account.</p>
+        </div>
+        <p hlmCardContent>
+          <label class="my-4 block" hlmLabel>
+            First name
+            <input class="mt-1.5 w-full" type="text" hlmInput [formField]="signUpForm.firstName" />
+          </label>
+          @if (signUpForm.firstName().touched() && signUpForm.firstName().invalid()) {
+            <ul class="error-list">
+              @for (error of signUpForm.firstName().errors(); track error) {
+                <li>
+                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                </li>
+              }
+            </ul>
+          }
+          <label class="my-4 block" hlmLabel>
+            Last name
+            <input class="mt-1.5 w-full" type="text" hlmInput [formField]="signUpForm.lastName" />
+          </label>
+          @if (signUpForm.lastName().touched() && signUpForm.lastName().invalid()) {
+            <ul class="error-list">
+              @for (error of signUpForm.lastName().errors(); track error) {
+                <li>
+                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                </li>
+              }
+            </ul>
+          }
+          <label class="my-4 block" hlmLabel>
+            Email
+            <input class="mt-1.5 w-full" type="email" hlmInput [formField]="signUpForm.email" />
+          </label>
+          @if (signUpForm.email().touched() && signUpForm.email().invalid()) {
+            <ul class="error-list">
+              @for (error of signUpForm.email().errors(); track error) {
+                <li>
+                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                </li>
+              }
+            </ul>
+          }
+          <label class="my-4 block" hlmLabel>
+            Password
+            <input
+              class="mt-1.5 w-full"
+              type="password"
+              hlmInput
+              [formField]="signUpForm.password"
+            />
+          </label>
+          @if (signUpForm.password().touched() && signUpForm.password().invalid()) {
+            <ul class="error-list">
+              @for (error of signUpForm.password().errors(); track error) {
+                <li>
+                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                </li>
+              }
+            </ul>
+          }
+        </p>
+        <div hlmCardFooter>
+          <button type="submit" hlmBtn>Create account</button>
+        </div>
+      </section>
+    </form>
   </div>
 </hlm-tabs>
