@@ -1,19 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmInputImports } from '@spartan-ng/helm/input';
 import { HlmLabelImports } from '@spartan-ng/helm/label';
 import { HlmTabsImports } from '@spartan-ng/helm/tabs';
 import { SignInRequest, SignUpRequest } from '../../models/auth.model';
-import {
-  debounce,
-  email,
-  form,
-  FormField,
-  minLength,
-  required,
-} from '@angular/forms/signals';
+import { debounce, email, form, FormField, minLength, required } from '@angular/forms/signals';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -65,15 +59,21 @@ export class Auth {
     this.addEmailAndPasswordValidation(schemaPath);
   });
 
-  protected onSignIn(event?: Event) {
+  private readonly authService = inject(AuthService);
+
+  protected onSignIn(event?: Event): void {
     event?.preventDefault();
     const payload: SignInRequest = this.signInRequestModel();
-    console.log('Logging in with', payload);
+    if (this.signInForm().valid()) {
+      this.authService.signIn(payload).subscribe();
+    }
   }
 
-  onSignUp(event?: Event) {
+  protected onSignUp(event?: Event): void {
     event?.preventDefault();
     const payload: SignUpRequest = this.signUpRequestModel();
-    console.log('Logging in with', payload);
+    if (this.signUpForm().valid()) {
+      this.authService.signUp(payload).subscribe();
+    }
   }
 }
