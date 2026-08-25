@@ -9,3 +9,14 @@ export interface SignUpRequest {
   email: string;
   password: string;
 }
+
+export interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+  expiresAt: string;
+  user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
+}
