@@ -11,6 +11,15 @@
           <p hlmCardDescription>Login to your account.</p>
         </div>
         <p hlmCardContent>
+          @if (signInErrorMessage()) {
+            <hlm-alert
+              class="border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50"
+            >
+              <ng-icon name="lucideAlertTriangle" />
+              <h4 hlmAlertTitle>Something went wrong</h4>
+              <p hlmAlertDescription>{{ signInErrorMessage() }}</p>
+            </hlm-alert>
+          }
           <label class="my-4 block" hlmLabel>
             Email
             <input class="mt-1.5 w-full" type="email" hlmInput [formField]="signInForm.email" />
@@ -57,6 +66,15 @@
           <p hlmCardDescription>Create a new account.</p>
         </div>
         <p hlmCardContent>
+          @if (signUpErrorMessage()) {
+            <hlm-alert
+              class="border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50"
+            >
+              <ng-icon name="lucideAlertTriangle" />
+              <h4 hlmAlertTitle>Something went wrong</h4>
+              <p hlmAlertDescription>{{ signUpErrorMessage() }}</p>
+            </hlm-alert>
+          }
           <label class="my-4 block" hlmLabel>
             First name
             <input class="mt-1.5 w-full" type="text" hlmInput [formField]="signUpForm.firstName" />

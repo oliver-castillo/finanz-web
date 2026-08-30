@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmInputImports } from '@spartan-ng/helm/input';
@@ -8,6 +8,11 @@ import { SignInRequest, SignUpRequest } from '../../models/auth.model';
 import { debounce, email, form, FormField, minLength, required } from '@angular/forms/signals';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { HlmAlertImports } from '@spartan-ng/helm/alert';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideAlertTriangle } from '@ng-icons/lucide';
 
 @Component({
   selector: 'app-auth',
@@ -19,12 +24,15 @@ import { AuthService } from '../../services/auth.service';
     HlmButtonImports,
     HlmFieldImports,
     FormField,
+    HlmAlertImports,
+    NgIcon,
   ],
   host: {
     class: 'block w-full max-w-lg',
   },
   templateUrl: './auth.html',
   styleUrl: './auth.scss',
+  providers: [provideIcons({ lucideAlertTriangle })],
 })
 export class Auth {
   signInRequestModel = signal<SignInRequest>({
@@ -39,7 +47,7 @@ export class Auth {
     password: '',
   });
 
-  private addEmailAndPasswordValidation(schemaPath: any) {
+  private addEmailAndPasswordValidation(schemaPath: any): void {
     debounce(schemaPath.email, 500);
     required(schemaPath.email, { message: 'Email is required' });
     email(schemaPath.email, { message: 'Email is invalid' });
@@ -59,21 +67,44 @@ export class Auth {
     this.addEmailAndPasswordValidation(schemaPath);
   });
 
-  private readonly authService = inject(AuthService);
+  protected readonly signInErrorMessage = signal<string | null>(null);
+  protected readonly signUpErrorMessage = signal<string | null>(null);
+
+  private readonly authService: AuthService = inject(AuthService);
+  private readonly router = inject(Router);
 
   protected onSignIn(event?: Event): void {
     event?.preventDefault();
-    const payload: SignInRequest = this.signInRequestModel();
-    if (this.signInForm().valid()) {
-      this.authService.signIn(payload).subscribe();
+    this.signInErrorMessage.set(null);
+
+    if (!this.signInForm().valid()) {
+      return;
     }
+
+    this.authService.signIn(this.signInRequestModel()).subscribe({
+      next: () => this.router.navigateByUrl('/'),
+      error: (error: HttpErrorResponse) => this.handleAuthError(error, this.signInErrorMessage),
+    });
   }
 
   protected onSignUp(event?: Event): void {
     event?.preventDefault();
-    const payload: SignUpRequest = this.signUpRequestModel();
-    if (this.signUpForm().valid()) {
-      this.authService.signUp(payload).subscribe();
+    this.signUpErrorMessage.set(null);
+
+    if (!this.signUpForm().valid()) {
+      return;
     }
+
+    this.authService.signUp(this.signUpRequestModel()).subscribe({
+      next: () => this.router.navigateByUrl('/'),
+      error: (error: HttpErrorResponse) => this.handleAuthError(error, this.signUpErrorMessage),
+    });
+  }
+
+  private handleAuthError(
+    error: HttpErrorResponse,
+    writableSignal: WritableSignal<string | null>,
+  ): void {
+    writableSignal.set(error.error?.message);
   }
 }
