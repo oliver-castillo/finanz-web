@@ -28,7 +28,7 @@ import { lucideAlertTriangle } from '@ng-icons/lucide';
     NgIcon,
   ],
   host: {
-    class: 'block w-full max-w-lg',
+    class: 'mx-auto flex min-h-screen w-full max-w-lg items-center justify-center',
   },
   templateUrl: './auth.html',
   styleUrl: './auth.scss',
@@ -82,7 +82,7 @@ export class Auth {
     }
 
     this.authService.signIn(this.signInRequestModel()).subscribe({
-      next: () => this.router.navigateByUrl('/'),
+      next: () => this.router.navigateByUrl('/dashboard'),
       error: (error: HttpErrorResponse) => this.handleAuthError(error, this.signInErrorMessage),
     });
   }
@@ -96,7 +96,7 @@ export class Auth {
     }
 
     this.authService.signUp(this.signUpRequestModel()).subscribe({
-      next: () => this.router.navigateByUrl('/'),
+      next: () => this.router.navigateByUrl('/dashboard'),
       error: (error: HttpErrorResponse) => this.handleAuthError(error, this.signUpErrorMessage),
     });
   }
