@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import {Auth} from './components/auth/auth';
-import { Dashboard } from './components/dashboard/dashboard';
+import {Auth} from './features/auth/auth';
+import { MainLayout } from './layout/main-layout/main-layout.component';
+import { Dashboard } from './features/dashboard/dashboard';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,13 @@ export const routes: Routes = [
     component: Auth,
   },
   {
-    path: 'dashboard',
-    component: Dashboard,
+    path: '',
+    component: MainLayout,
+    children: [
+      {
+        path: 'dashboard',
+        component: Dashboard,
+      },
+    ]
   }
 ];
