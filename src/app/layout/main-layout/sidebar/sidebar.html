@@ -1,0 +1,157 @@
+<div hlmSidebarWrapper>
+  <hlm-sidebar [collapsible]="'icon'" [variant]="'floating'">
+    <div hlmSidebarHeader class="border-b">
+      <ul hlmSidebarMenu>
+        <a hlmSidebarMenuButton class="!p-1.5">
+          <ng-icon name="tablerInnerShadowTop" />
+          <span class="text-base font-semibold">Finanz</span>
+        </a>
+      </ul>
+    </div>
+    <div hlmSidebarContent>
+      <div hlmSidebarGroup>
+        <div hlmSidebarGroupLabel>Home</div>
+        <div hlmSidebarGroupContent>
+          <ul hlmSidebarMenu>
+            @for (item of _items.navMain; track item.title) {
+              <li hlmSidebarMenuItem>
+                <a hlmSidebarMenuButton>
+                  <ng-icon [name]="item.icon" />
+                  <span>{{ item.title }}</span>
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div hlmSidebarGroup>
+        <div hlmSidebarGroupLabel>Home</div>
+        <div hlmSidebarGroupContent>
+          <ul hlmSidebarMenu>
+            @for (item of _items.documents; track item.name) {
+              <li hlmSidebarMenuItem>
+                <a hlmSidebarMenuButton>
+                  <ng-icon [name]="item.icon" />
+                  <span>{{ item.name }}</span>
+                </a>
+                <button hlmSidebarMenuAction [showOnHover]="true" [hlmDropdownMenuTrigger]="menu">
+                  <ng-icon name="tablerDots" />
+                  <span class="sr-only">More</span>
+                </button>
+              </li>
+            }
+            <li hlmSidebarMenuItem>
+              <a hlmSidebarMenuButton class="text-sidebar-foreground/70">
+                <ng-icon name="tablerDots" class="text-sidebar-foreground/70" />
+                <span>More</span>
+              </a>
+            </li>
+            <ng-template #menu>
+              <hlm-dropdown-menu class="w-24 rounded-lg">
+                <button hlmDropdownMenuItem>
+                  <ng-icon name="tablerFolder" />
+                  <span>Open</span>
+                </button>
+
+                <button hlmDropdownMenuItem>
+                  <ng-icon name="tablerShare3" />
+                  <span>Share</span>
+                </button>
+                <hlm-dropdown-menu-separator />
+                <button hlmDropdownMenuItem variant="destructive">
+                  <ng-icon name="tablerTrash" />
+                  <span>Delete</span>
+                </button>
+              </hlm-dropdown-menu>
+            </ng-template>
+          </ul>
+        </div>
+      </div>
+      <div hlmSidebarGroup class="mt-auto">
+        <div hlmSidebarGroupContent>
+          <ul hlmSidebarMenu>
+            @for (item of _items.navSecondary; track item.title) {
+              <li hlmSidebarMenuItem>
+                <a hlmSidebarMenuButton>
+                  <ng-icon [name]="item.icon" />
+                  <span>{{ item.title }}</span>
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div hlmSidebarFooter>
+      <ul hlmSidebarMenu>
+        <li hlmSidebarMenuItem>
+          <a
+            hlmSidebarMenuButton
+            size="lg"
+            class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            [hlmDropdownMenuTrigger]="userMenu"
+          >
+            <hlm-avatar class="size-8 rounded-lg grayscale">
+              <img
+                [src]="_items.user.avatar"
+                alt="spartan logo. Resembling a spartanic shield"
+                hlmAvatarImage
+              />
+              <span class="rounded-lg bg-[#FD005B] text-white" hlmAvatarFallback>SP</span>
+            </hlm-avatar>
+            <div class="grid flex-1 text-left text-sm leading-tight">
+              <span class="truncate font-medium">{{ _items.user.name }}</span>
+              <span class="text-muted-foreground truncate text-xs">
+                {{ _items.user.email }}
+              </span>
+            </div>
+            <ng-icon name="tablerDotsVertical" class="ml-auto" />
+          </a>
+        </li>
+      </ul>
+      <ng-template #userMenu>
+        <hlm-dropdown-menu class="min-w-56 rounded-lg">
+          <hlm-dropdown-menu-label class="p-0 font-normal">
+            <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+              <hlm-avatar class="size-8 rounded-lg">
+                <img
+                  [src]="_items.user.avatar"
+                  alt="spartan logo. Resembling a spartanic shield"
+                  hlmAvatarImage
+                />
+                <span class="rounded-lg bg-[#FD005B] text-white" hlmAvatarFallback>SP</span>
+              </hlm-avatar>
+              <div class="grid flex-1 text-left text-sm leading-tight">
+                <span class="truncate font-medium">{{ _items.user.name }}</span>
+                <span class="text-muted-foreground truncate text-xs">
+                  {{ _items.user.email }}
+                </span>
+              </div>
+            </div>
+          </hlm-dropdown-menu-label>
+          <hlm-dropdown-menu-separator />
+          <hlm-dropdown-menu-group>
+            <button hlmDropdownMenuItem>
+              <ng-icon name="tablerUserCircle" />
+              <span>Account</span>
+            </button>
+            <button hlmDropdownMenuItem>
+              <ng-icon name="tablerCreditCard" />
+              <span>Billing</span>
+            </button>
+            <button hlmDropdownMenuItem>
+              <ng-icon name="tablerNotification" />
+              <span>Notifications</span>
+            </button>
+          </hlm-dropdown-menu-group>
+          <hlm-dropdown-menu-separator />
+          <button hlmDropdownMenuItem>
+            <ng-icon name="tablerLogout" />
+            <span>Logout</span>
+          </button>
+        </hlm-dropdown-menu>
+      </ng-template>
+    </div>
+  </hlm-sidebar>
+  <ng-content />
+</div>
