@@ -1,10 +1,10 @@
-import { inject, Service } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-import { AuthResponse, SignInRequest, SignUpRequest } from '../models/auth.model';
-import { environment } from '../../environments/environment';
-import { Path } from '../util/path';
-import { Token } from '../util/token';
+import {inject, Service} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, tap} from 'rxjs';
+import {AuthResponse, SignInRequest, SignUpRequest} from '../models/auth.model';
+import {environment} from '../../environments/environment';
+import {Path} from '../util/path';
+import {Token} from '../util/token';
 
 @Service()
 export class AuthService {
@@ -37,5 +37,10 @@ export class AuthService {
 
   private setRefreshToken(refreshToken: string): void {
     localStorage.setItem(Token.REFRESH_TOKEN, refreshToken);
+  }
+
+  public isAuthenticated(): boolean {
+    const accessToken: string | null = localStorage.getItem(Token.ACCESS_TOKEN);
+    return !!accessToken;
   }
 }
