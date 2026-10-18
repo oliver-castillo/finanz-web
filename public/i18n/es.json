@@ -1,0 +1,52 @@
+{
+  "sidebar": {
+    "navMain": {
+      "dashboard": "Panel",
+      "accounts": "Cuentas",
+      "analytics": "Análisis",
+      "projects": "Proyectos",
+      "team": "Equipo"
+    }
+  },
+  "auth": {
+    "tabs": {
+      "ariaLabel": "Autenticación"
+    },
+    "signIn": {
+      "title": "Iniciar sesión",
+      "description": "Inicia sesión en tu cuenta.",
+      "submit": "Iniciar sesión"
+    },
+    "signUp": {
+      "title": "Crear cuenta",
+      "description": "Crea una cuenta nueva.",
+      "submit": "Crear cuenta"
+    },
+    "error": {
+      "title": "Ocurrió un error"
+    },
+    "fields": {
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "firstName": "Nombre",
+      "lastName": "Apellido"
+    },
+    "validation": {
+      "emailRequired": "El correo electrónico es obligatorio",
+      "emailInvalid": "El correo electrónico no es válido",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+      "firstNameRequired": "El nombre es obligatorio",
+      "lastNameRequired": "El apellido es obligatorio"
+    }
+  },
+  "features": {
+    "dashboard": {
+      "title": "Panel"
+    },
+    "accounts": {
+      "title": "Cuentas",
+      "addAccount": "Agregar cuenta"
+    }
+  }
+}

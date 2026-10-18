@@ -1,14 +1,14 @@
 <hlm-tabs tab="sign-in" class="w-full">
-  <hlm-tabs-list aria-label="auth tabs">
-    <button hlmTabsTrigger="sign-in">Login</button>
-    <button hlmTabsTrigger="sign-up">Create account</button>
+  <hlm-tabs-list [attr.aria-label]="'auth.tabs.ariaLabel' | transloco">
+    <button hlmTabsTrigger="sign-in">{{ 'auth.signIn.title' | transloco }}</button>
+    <button hlmTabsTrigger="sign-up">{{ 'auth.signUp.title' | transloco }}</button>
   </hlm-tabs-list>
   <div hlmTabsContent="sign-in">
     <form (submit)="onSignIn($event)">
       <section hlmCard>
         <div hlmCardHeader>
-          <h3 hlmCardTitle>Login</h3>
-          <p hlmCardDescription>Login to your account.</p>
+          <h3 hlmCardTitle>{{ 'auth.signIn.title' | transloco }}</h3>
+          <p hlmCardDescription>{{ 'auth.signIn.description' | transloco }}</p>
         </div>
         <p hlmCardContent>
           @if (signInErrorMessage()) {
@@ -16,25 +16,25 @@
               class="border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50"
             >
               <ng-icon name="lucideAlertTriangle" />
-              <h4 hlmAlertTitle>Something went wrong</h4>
+              <h4 hlmAlertTitle>{{ 'auth.error.title' | transloco }}</h4>
               <p hlmAlertDescription>{{ signInErrorMessage() }}</p>
             </hlm-alert>
           }
           <label class="my-4 block" hlmLabel>
-            Email
+            {{ 'auth.fields.email' | transloco }}
             <input class="mt-1.5 w-full" type="email" hlmInput [formField]="signInForm.email" />
           </label>
           @if (signInForm.email().touched() && signInForm.email().invalid()) {
             <ul class="error-list">
               @for (error of signInForm.email().errors(); track error) {
                 <li>
-                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                  <hlm-field-description>{{ error.message | transloco }}</hlm-field-description>
                 </li>
               }
             </ul>
           }
           <label class="my-4 block" hlmLabel>
-            Password
+            {{ 'auth.fields.password' | transloco }}
             <input
               class="mt-1.5 w-full"
               type="password"
@@ -46,14 +46,14 @@
             <ul class="error-list">
               @for (error of signInForm.password().errors(); track error) {
                 <li>
-                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                  <hlm-field-description>{{ error.message | transloco }}</hlm-field-description>
                 </li>
               }
             </ul>
           }
         </p>
         <div hlmCardFooter>
-          <button type="submit" hlmBtn>Login</button>
+          <button type="submit" hlmBtn>{{ 'auth.signIn.submit' | transloco }}</button>
         </div>
       </section>
     </form>
@@ -62,8 +62,8 @@
     <form (submit)="onSignUp($event)">
       <section hlmCard>
         <div hlmCardHeader>
-          <h3 hlmCardTitle>Create account</h3>
-          <p hlmCardDescription>Create a new account.</p>
+          <h3 hlmCardTitle>{{ 'auth.signUp.title' | transloco }}</h3>
+          <p hlmCardDescription>{{ 'auth.signUp.description' | transloco }}</p>
         </div>
         <p hlmCardContent>
           @if (signUpErrorMessage()) {
@@ -71,51 +71,51 @@
               class="border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50"
             >
               <ng-icon name="lucideAlertTriangle" />
-              <h4 hlmAlertTitle>Something went wrong</h4>
+              <h4 hlmAlertTitle>{{ 'auth.error.title' | transloco }}</h4>
               <p hlmAlertDescription>{{ signUpErrorMessage() }}</p>
             </hlm-alert>
           }
           <label class="my-4 block" hlmLabel>
-            First name
+            {{ 'auth.fields.firstName' | transloco }}
             <input class="mt-1.5 w-full" type="text" hlmInput [formField]="signUpForm.firstName" />
           </label>
           @if (signUpForm.firstName().touched() && signUpForm.firstName().invalid()) {
             <ul class="error-list">
               @for (error of signUpForm.firstName().errors(); track error) {
                 <li>
-                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                  <hlm-field-description>{{ error.message | transloco }}</hlm-field-description>
                 </li>
               }
             </ul>
           }
           <label class="my-4 block" hlmLabel>
-            Last name
+            {{ 'auth.fields.lastName' | transloco }}
             <input class="mt-1.5 w-full" type="text" hlmInput [formField]="signUpForm.lastName" />
           </label>
           @if (signUpForm.lastName().touched() && signUpForm.lastName().invalid()) {
             <ul class="error-list">
               @for (error of signUpForm.lastName().errors(); track error) {
                 <li>
-                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                  <hlm-field-description>{{ error.message | transloco }}</hlm-field-description>
                 </li>
               }
             </ul>
           }
           <label class="my-4 block" hlmLabel>
-            Email
+            {{ 'auth.fields.email' | transloco }}
             <input class="mt-1.5 w-full" type="email" hlmInput [formField]="signUpForm.email" />
           </label>
           @if (signUpForm.email().touched() && signUpForm.email().invalid()) {
             <ul class="error-list">
               @for (error of signUpForm.email().errors(); track error) {
                 <li>
-                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                  <hlm-field-description>{{ error.message | transloco }}</hlm-field-description>
                 </li>
               }
             </ul>
           }
           <label class="my-4 block" hlmLabel>
-            Password
+            {{ 'auth.fields.password' | transloco }}
             <input
               class="mt-1.5 w-full"
               type="password"
@@ -127,14 +127,14 @@
             <ul class="error-list">
               @for (error of signUpForm.password().errors(); track error) {
                 <li>
-                  <hlm-field-description>{{ error.message }} </hlm-field-description>
+                  <hlm-field-description>{{ error.message | transloco }}</hlm-field-description>
                 </li>
               }
             </ul>
           }
         </p>
         <div hlmCardFooter>
-          <button type="submit" hlmBtn>Create account</button>
+          <button type="submit" hlmBtn>{{ 'auth.signUp.submit' | transloco }}</button>
         </div>
       </section>
     </form>

@@ -17,7 +17,7 @@
               <li hlmSidebarMenuItem>
                 <a hlmSidebarMenuButton routerLink="{{ item.url }}">
                   <ng-icon [name]="item.icon" />
-                  <span>{{ item.title }}</span>
+                  <span>{{ item.title | transloco }}</span>
                 </a>
               </li>
             }

@@ -13,7 +13,7 @@ import { Header, type HeaderAction } from '../../layout/main-layout/header/heade
 export class Accounts {
   readonly headerActions: HeaderAction[] = [
     {
-      label: 'Add Account',
+      label: 'features.accounts.addAccount',
       icon: 'tablerCirclePlus',
       className: 'hidden sm:flex',
     },

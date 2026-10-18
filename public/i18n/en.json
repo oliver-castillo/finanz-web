@@ -1,0 +1,52 @@
+{
+  "sidebar": {
+    "navMain": {
+      "dashboard": "Dashboard",
+      "accounts": "Accounts",
+      "analytics": "Analytics",
+      "projects": "Projects",
+      "team": "Team"
+    }
+  },
+  "auth": {
+    "tabs": {
+      "ariaLabel": "Authentication"
+    },
+    "signIn": {
+      "title": "Log in",
+      "description": "Log in to your account.",
+      "submit": "Log in"
+    },
+    "signUp": {
+      "title": "Create account",
+      "description": "Create a new account.",
+      "submit": "Create account"
+    },
+    "error": {
+      "title": "Something went wrong"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "firstName": "First name",
+      "lastName": "Last name"
+    },
+    "validation": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Email is invalid",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 8 characters long",
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required"
+    }
+  },
+  "features": {
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "accounts": {
+      "title": "Accounts",
+      "addAccount": "Add account"
+    }
+  }
+}

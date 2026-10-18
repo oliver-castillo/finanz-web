@@ -2,6 +2,7 @@ import { Component, input } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { HlmSidebarTrigger } from '@spartan-ng/helm/sidebar';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 export interface HeaderAction {
   label: string;
@@ -11,7 +12,7 @@ export interface HeaderAction {
 }
 
 @Component({
-  imports: [HlmSidebarTrigger, HlmButtonImports, NgIcon],
+  imports: [HlmSidebarTrigger, HlmButtonImports, NgIcon, TranslocoPipe],
   selector: 'app-header',
   styleUrl: './header.scss',
   templateUrl: './header.html',

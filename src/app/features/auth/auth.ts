@@ -13,6 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { HlmAlertImports } from '@spartan-ng/helm/alert';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideAlertTriangle } from '@ng-icons/lucide';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-auth',
@@ -26,6 +27,7 @@ import { lucideAlertTriangle } from '@ng-icons/lucide';
     FormField,
     HlmAlertImports,
     NgIcon,
+    TranslocoPipe,
   ],
   host: {
     class: 'mx-auto flex min-h-screen w-full max-w-lg items-center justify-center',
@@ -49,12 +51,12 @@ export class Auth {
 
   private addEmailAndPasswordValidation(schemaPath: any): void {
     debounce(schemaPath.email, 500);
-    required(schemaPath.email, { message: 'Email is required' });
-    email(schemaPath.email, { message: 'Email is invalid' });
+    required(schemaPath.email, { message: 'auth.validation.emailRequired' });
+    email(schemaPath.email, { message: 'auth.validation.emailInvalid' });
 
     debounce(schemaPath.password, 500);
-    required(schemaPath.password, { message: 'Password is required' });
-    minLength(schemaPath.password, 8, { message: 'Password must be at least 8 characters long' });
+    required(schemaPath.password, { message: 'auth.validation.passwordRequired' });
+    minLength(schemaPath.password, 8, { message: 'auth.validation.passwordMinLength' });
   }
 
   protected readonly signInForm = form(this.signInRequestModel, (schemaPath) => {
@@ -62,8 +64,8 @@ export class Auth {
   });
 
   protected readonly signUpForm = form(this.signUpRequestModel, (schemaPath) => {
-    required(schemaPath.firstName, { message: 'First name is required' });
-    required(schemaPath.lastName, { message: 'Last name is required' });
+    required(schemaPath.firstName, { message: 'auth.validation.firstNameRequired' });
+    required(schemaPath.lastName, { message: 'auth.validation.lastNameRequired' });
     this.addEmailAndPasswordValidation(schemaPath);
   });
 

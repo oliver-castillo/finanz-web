@@ -31,10 +31,18 @@ import {
   tablerUsers,
 } from '@ng-icons/tabler-icons';
 import { RouterLink } from '@angular/router';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [HlmSidebarImports, HlmAvatarImports, HlmDropdownMenuImports, NgIcon, RouterLink],
+  imports: [
+    HlmSidebarImports,
+    HlmAvatarImports,
+    HlmDropdownMenuImports,
+    NgIcon,
+    RouterLink,
+    TranslocoPipe,
+  ],
   templateUrl: './sidebar.html',
   providers: [
     provideIcons({
@@ -75,27 +83,27 @@ export class Sidebar {
     },
     navMain: [
       {
-        title: 'Dashboard',
+        title: 'sidebar.navMain.dashboard',
         url: '/dashboard',
         icon: 'tablerDashboard',
       },
       {
-        title: 'Accounts',
+        title: 'sidebar.navMain.accounts',
         url: '/accounts',
         icon: 'tablerListDetails',
       },
       {
-        title: 'Analytics',
+        title: 'sidebar.navMain.analytics',
         url: '#',
         icon: 'tablerChartBar',
       },
       {
-        title: 'Projects',
+        title: 'sidebar.navMain.projects',
         url: '#',
         icon: 'tablerFolder',
       },
       {
-        title: 'Team',
+        title: 'sidebar.navMain.team',
         url: '#',
         icon: 'tablerUsers',
       },
