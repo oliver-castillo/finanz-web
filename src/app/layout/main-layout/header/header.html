@@ -1,10 +1,21 @@
-<header class="flex h-16 shrink-0 items-center gap-2">
-  <div class="flex items-center gap-2 px-4">
+<header>
+  <div class="flex h-16 items-center gap-2 px-4">
     <button hlmSidebarTrigger></button>
     <h1 class="text-base font-medium">{{ title() }}</h1>
-    <button hlmBtn variant="outline" size="sm">
-      <ng-icon name="lucideGitBranch" />
-      New Branch
-    </button>
+    <div class="ml-auto flex items-center gap-2">
+      @for (action of actions(); track action) {
+        <button
+          hlmBtn
+          size="sm"
+          class="h-7 sm:flex"
+          (click)="action.onClick?.()"
+        >
+          @if (action.icon) {
+            <ng-icon [name]="action.icon" />
+          }
+          <span>{{ action.label }}</span>
+        </button>
+      }
+    </div>
   </div>
 </header>

@@ -1,16 +1,22 @@
 import { Component, input } from '@angular/core';
+import { NgIcon } from '@ng-icons/core';
 import { HlmSidebarTrigger } from '@spartan-ng/helm/sidebar';
-import { NgIcon, provideIcons } from '@ng-icons/core';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
-import { lucideCircleFadingPlus } from '@ng-icons/lucide';
+
+export interface HeaderAction {
+  label: string;
+  icon?: string;
+  className?: string;
+  onClick?: () => void;
+}
 
 @Component({
-  imports: [HlmSidebarTrigger, NgIcon, HlmButtonImports],
+  imports: [HlmSidebarTrigger, HlmButtonImports, NgIcon],
   selector: 'app-header',
   styleUrl: './header.scss',
   templateUrl: './header.html',
-  providers: [provideIcons({ lucideCircleFadingPlus })],
 })
 export class Header {
   readonly title = input.required<string>();
+  readonly actions = input<readonly HeaderAction[]>([]);
 }
