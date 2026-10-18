@@ -15,7 +15,7 @@
           <ul hlmSidebarMenu>
             @for (item of _items.navMain; track item.title) {
               <li hlmSidebarMenuItem>
-                <a hlmSidebarMenuButton>
+                <a hlmSidebarMenuButton routerLink="{{ item.url }}">
                   <ng-icon [name]="item.icon" />
                   <span>{{ item.title }}</span>
                 </a>

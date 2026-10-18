@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Header} from '../../layout/main-layout/header/header';
 
 @Component({
-  imports: [],
+  imports: [Header],
   selector: 'app-dashboard',
   styleUrl: './dashboard.scss',
   templateUrl: './dashboard.html',
 })
-export class Dashboard {}
+export class Dashboard {
+}

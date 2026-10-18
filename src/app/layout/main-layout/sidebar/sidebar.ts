@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
 import { HlmAvatarImports } from '@spartan-ng/helm/avatar';
 import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
-import {NgIcon, provideIcons} from "@ng-icons/core";
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   tablerCamera,
   tablerChartBar,
@@ -30,10 +30,11 @@ import {
   tablerUserCircle,
   tablerUsers,
 } from '@ng-icons/tabler-icons';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [HlmSidebarImports, HlmAvatarImports, HlmDropdownMenuImports, NgIcon],
+  imports: [HlmSidebarImports, HlmAvatarImports, HlmDropdownMenuImports, NgIcon, RouterLink],
   templateUrl: './sidebar.html',
   providers: [
     provideIcons({
@@ -75,12 +76,12 @@ export class Sidebar {
     navMain: [
       {
         title: 'Dashboard',
-        url: '#',
+        url: '/dashboard',
         icon: 'tablerDashboard',
       },
       {
-        title: 'Lifecycle',
-        url: '#',
+        title: 'Accounts',
+        url: '/accounts',
         icon: 'tablerListDetails',
       },
       {
