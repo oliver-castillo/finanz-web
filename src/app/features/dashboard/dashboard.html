@@ -1,1 +1,7 @@
-<h1 class="text-3xl font-bold tracking-tight">{{ 'features.dashboard.title' | transloco }}</h1>
+<div class="flex items-center justify-between">
+  <h1 class="text-3xl font-bold tracking-tight">{{ 'features.dashboard.title' | transloco }}</h1>
+  <button hlmBtn size="sm" class="hidden h-7 sm:flex">
+    <ng-icon name="tablerCirclePlus" />
+    <span>{{ 'features.dashboard.quick-create' | transloco }}</span>
+  </button>
+</div>

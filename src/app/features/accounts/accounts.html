@@ -1,1 +1,9 @@
-<h1 class="text-3xl font-bold tracking-tight">{{ 'features.accounts.title' | transloco }}</h1>
+<div class="flex items-center gap-2">
+  <h1 class="text-3xl font-bold tracking-tight">{{ 'features.accounts.title' | transloco }}</h1>
+  <div class="ml-auto flex items-center gap-2">
+    <button hlmBtn class="h-8 sm:flex">
+      <ng-icon name="tablerCirclePlus" />
+      <span>{{ 'features.accounts.addAccount' | transloco }}</span>
+    </button>
+  </div>
+</div>
