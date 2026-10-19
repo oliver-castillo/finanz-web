@@ -6,9 +6,16 @@
       "analytics": "Analytics",
       "projects": "Projects",
       "team": "Team"
+    },
+    "language": {
+      "switchToEnglish": "English",
+      "switchToSpanish": "Español"
     }
   },
   "auth": {
+    "language": {
+      "label": "Language"
+    },
     "tabs": {
       "ariaLabel": "Authentication"
     },
