@@ -1,11 +1,9 @@
-import {Component} from '@angular/core';
-import {Header} from '../../layout/main-layout/header/header';
-
+import { Component } from '@angular/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 @Component({
-  imports: [Header],
+  imports: [TranslocoPipe],
   selector: 'app-dashboard',
   styleUrl: './dashboard.scss',
   templateUrl: './dashboard.html',
 })
-export class Dashboard {
-}
+export class Dashboard {}

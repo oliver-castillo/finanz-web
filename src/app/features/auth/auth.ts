@@ -14,6 +14,7 @@ import { HlmAlertImports } from '@spartan-ng/helm/alert';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideAlertTriangle } from '@ng-icons/lucide';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { LanguageSelect } from '../../layout/main-layout/language-select/language-select';
 
 @Component({
   selector: 'app-auth',
@@ -28,6 +29,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
     HlmAlertImports,
     NgIcon,
     TranslocoPipe,
+    LanguageSelect,
   ],
   host: {
     class: 'mx-auto flex min-h-screen w-full max-w-lg items-center justify-center',

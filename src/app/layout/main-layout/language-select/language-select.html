@@ -1,0 +1,16 @@
+<hlm-select
+  [value]="transloco.getActiveLang()"
+  [itemToString]="languageLabel"
+  (valueChange)="setLanguage($event)"
+>
+  <hlm-select-trigger
+    class="w-36"
+    [attr.aria-label]="'language.label' | transloco"
+  >
+    <hlm-select-value />
+  </hlm-select-trigger>
+  <hlm-select-content *hlmSelectPortal>
+    <hlm-select-item value="en">English</hlm-select-item>
+    <hlm-select-item value="es">Español</hlm-select-item>
+  </hlm-select-content>
+</hlm-select>

@@ -1,4 +1,7 @@
 {
+  "language": {
+    "label": "Idioma"
+  },
   "sidebar": {
     "navMain": {
       "dashboard": "Panel",

@@ -1,5 +1,13 @@
 <app-sidebar>
-  <main hlmSidebarInset>
+  <main hlmSidebarInset class="px-4">
+    <header>
+      <div class="flex h-12 items-center gap-2">
+        <button hlmSidebarTrigger></button>
+        <div class="ml-auto flex items-center gap-2">
+          <app-language-select />
+        </div>
+      </div>
+    </header>
     <router-outlet />
   </main>
 </app-sidebar>

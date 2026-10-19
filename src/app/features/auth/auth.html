@@ -1,4 +1,7 @@
 <hlm-tabs tab="sign-in" class="w-full">
+  <div class="fixed right-4 top-4 z-50">
+    <app-language-select />
+  </div>
   <hlm-tabs-list [attr.aria-label]="'auth.tabs.ariaLabel' | transloco">
     <button hlmTabsTrigger="sign-in">{{ 'auth.signIn.title' | transloco }}</button>
     <button hlmTabsTrigger="sign-up">{{ 'auth.signUp.title' | transloco }}</button>
