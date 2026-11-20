@@ -1,9 +1,33 @@
 <div class="flex items-center gap-2">
   <h1 class="text-3xl font-bold tracking-tight">{{ 'features.accounts.title' | transloco }}</h1>
   <div class="ml-auto flex items-center gap-2">
-    <button hlmBtn class="h-8 sm:flex">
-      <ng-icon name="tablerCirclePlus" />
-      <span>{{ 'features.accounts.addAccount' | transloco }}</span>
-    </button>
+    <hlm-dialog>
+      <button hlmDialogTrigger hlmBtn class="h-8 sm:flex">
+        <ng-icon name="tablerCirclePlus" />
+        <span>{{ 'features.accounts.addAccount' | transloco }}</span>
+      </button>
+      <hlm-dialog-content *hlmDialogPortal="let ctx" class="sm:max-w-sm">
+        <hlm-dialog-header>
+          <h3 hlmDialogTitle>Edit profile</h3>
+          <p hlmDialogDescription>
+            Make changes to your profile here. Click save when you're done.
+          </p>
+        </hlm-dialog-header>
+        <hlm-field-group>
+          <hlm-field>
+            <label hlmFieldLabel for="name">Name</label>
+            <input hlmInput id="name" value="Pedro Duarte" />
+          </hlm-field>
+          <hlm-field>
+            <label hlmFieldLabel for="username">Username</label>
+            <input hlmInput id="username" value="@peduarte" />
+          </hlm-field>
+        </hlm-field-group>
+        <hlm-dialog-footer>
+          <button hlmBtn variant="outline" hlmDialogClose>Cancel</button>
+          <button hlmBtn type="submit">Save changes</button>
+        </hlm-dialog-footer>
+      </hlm-dialog-content>
+    </hlm-dialog>
   </div>
 </div>
